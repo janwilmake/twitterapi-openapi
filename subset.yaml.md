@@ -2,7 +2,7 @@
 
 https://uithub.com/janwilmake/twitterapi-openapi/blob/main/openapi.json
 
-please get me the subset of this openapi for the following endpoints and put it in a new openapi.yaml
+Please get me the subset of this openapi for the following endpoints and put it in a new openapi.yaml
 
 - /twitter/user/info
 - /twitter/tweets
@@ -10,6 +10,4 @@ please get me the subset of this openapi for the following endpoints and put it 
 - /twitter/user/followings
 - /twitter/tweet/advanced_search
 
-please ensure to add a sensible operationId
-
-Prompt it: https://lmpify.com/httpsuithubcomj-puccb00
+Please ensure to add a sensible `operationId`
