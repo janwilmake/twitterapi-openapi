@@ -8,16 +8,8 @@
     },
     "version": "1.0.0"
   },
-  "servers": [
-    {
-      "url": "https://api.twitterapi.io"
-    }
-  ],
-  "security": [
-    {
-      "ApiKeyAuth": []
-    }
-  ],
+  "servers": [{ "url": "https://api.twitterapi.io" }],
+  "security": [{ "ApiKeyAuth": [] }],
   "paths": {
     "/twitter/user/info": {
       "get": {
@@ -71,7 +63,6 @@
         }
       }
     },
-
 
     "/twitter/trends": {
       "get": {
@@ -140,8 +131,6 @@
       }
     },
 
-
-
     "/twitter/user/batch_info_by_ids": {
       "get": {
         "description": "Batch get user info by user ids. Pricing:\n\n- Single user request: 18 credits per user\n- Bulk request (100+ users): 10 credits per user\n\nNote: For cost optimization, we recommend batching requests when fetching multiple user profiles.",
@@ -200,7 +189,6 @@
       }
     },
 
-
     "/twitter/user/last_tweets": {
       "get": {
         "description": "Retrieve tweets by user name.Sort by created_at. Results are paginated, with each page returning up to 20 tweets.This API will not return the tweets the user replied to. If you want to get the reply tweets, please use the advanced search API.",
@@ -224,7 +212,7 @@
               "type": "string",
               "format": "string"
             }
-          }, 
+          },
           {
             "name": "cursor",
             "in": "query",
@@ -250,7 +238,7 @@
                       },
                       "description": "Array of tweets"
                     },
-                    "has_next_page": {  
+                    "has_next_page": {
                       "type": "boolean",
                       "description": "Indicates if there are more results available"
                     },
@@ -267,9 +255,14 @@
                       "type": "string",
                       "description": "Message of the request.error message"
                     }
-                   
                   },
-                  "required": ["tweets", "status", "message", "has_next_page", "next_cursor"]
+                  "required": [
+                    "tweets",
+                    "status",
+                    "message",
+                    "has_next_page",
+                    "next_cursor"
+                  ]
                 }
               }
             }
@@ -288,11 +281,10 @@
       }
     },
 
-    
     "/twitter/tweets": {
       "get": {
         "description": "get tweet by tweet ids",
-        "parameters": [ 
+        "parameters": [
           {
             "name": "tweet_ids",
             "in": "query",
@@ -348,13 +340,12 @@
           }
         }
       }
-    }, 
-
+    },
 
     "/twitter/tweet/replies": {
       "get": {
         "description": "get tweet replies by tweet id.Each page returns exactly 20 replies. Use cursor for pagination. Order by reply time desc",
-        "parameters": [ 
+        "parameters": [
           {
             "name": "tweetId",
             "in": "query",
@@ -444,13 +435,12 @@
           }
         }
       }
-    }, 
-
+    },
 
     "/twitter/tweet/thread_context": {
       "get": {
         "description": "Get the thread context of a tweet.Suppose a tweet thread consists of t1, t2 (replying to t1), t3 (replying to t2), and t4, t5, t6 (all replying to t3). If we provide an API where you input t3 and receive t1, t2, t3, t4, t5, t6.Pagination is supported.The pagination size cannot be set (due to Twitter's limitations), and the data returned per page is not fixed.",
-        "parameters": [ 
+        "parameters": [
           {
             "name": "tweetId",
             "in": "query",
@@ -520,13 +510,12 @@
           }
         }
       }
-    }, 
-
+    },
 
     "/twitter/tweet/quotes": {
       "get": {
         "description": "get tweet quotes by tweet id.Each page returns exactly 20 quotes. Use cursor for pagination. Order by quote time desc",
-        "parameters": [ 
+        "parameters": [
           {
             "name": "tweetId",
             "in": "query",
@@ -626,14 +615,12 @@
           }
         }
       }
-    }, 
-
-
+    },
 
     "/twitter/user/mentions": {
       "get": {
         "description": "get tweet mentions by user screen name.Each page returns exactly 20 mentions. Use cursor for pagination. Order by mention time desc",
-        "parameters": [ 
+        "parameters": [
           {
             "name": "userName",
             "in": "query",
@@ -723,13 +710,12 @@
           }
         }
       }
-    }, 
-
+    },
 
     "/twitter/list/tweets": {
       "get": {
         "description": "get tweets by list id.Each page returns exactly 20 tweets. Use cursor for pagination. Order by tweet time desc",
-        "parameters": [ 
+        "parameters": [
           {
             "name": "listId",
             "in": "query",
@@ -829,12 +815,12 @@
           }
         }
       }
-    }, 
+    },
 
     "/twitter/tweet/retweeters": {
       "get": {
         "description": "get tweet retweeters by tweet id.Each page returns about 100 retweeters. Use cursor for pagination. Order by retweet time desc",
-        "parameters": [ 
+        "parameters": [
           {
             "name": "tweetId",
             "in": "query",
@@ -904,7 +890,7 @@
           }
         }
       }
-    }, 
+    },
 
     "/twitter/user/followers": {
       "get": {
@@ -934,7 +920,6 @@
           "200": {
             "description": "User info",
             "content": {
-
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -974,10 +959,6 @@
       }
     },
 
-
-    
-
-
     "/twitter/user/followings": {
       "get": {
         "description": "Get user followings. Each page returns exactly 200 followings. Use cursor for pagination.",
@@ -1016,7 +997,7 @@
                         "$ref": "#/components/schemas/UserInfo"
                       },
                       "description": "Array of followings"
-                    }, 
+                    },
                     "has_next_page": {
                       "type": "boolean",
                       "description": "Indicates if there are more results available"
@@ -1053,7 +1034,6 @@
       }
     },
 
-
     "/twitter/user/check_follow_relationship": {
       "get": {
         "description": "Check if the user is following/followed by the target user. Trial operation price: 100 credits per call.",
@@ -1082,7 +1062,6 @@
           "200": {
             "description": "Check follow relationship response",
             "content": {
-
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -1128,7 +1107,6 @@
       }
     },
 
-
     "/twitter/tweet/advanced_search": {
       "get": {
         "description": "Advanced search for tweets.Each page returns exactly about 20 tweets. Use cursor for pagination.",
@@ -1163,7 +1141,6 @@
               "format": "string"
             }
           }
-
         ],
         "responses": {
           "200": {
@@ -1207,7 +1184,6 @@
         }
       }
     },
-
 
     "/twitter/login_by_email_or_username": {
       "post": {
@@ -1320,7 +1296,7 @@
                       "type": "string",
                       "description": "Message of the request.error message"
                     },
-                    "user":{
+                    "user": {
                       "type": "object",
                       "description": "The user info of the login.",
                       "properties": {
@@ -1356,7 +1332,6 @@
         }
       }
     },
-
 
     "/twitter/create_tweet": {
       "post": {
@@ -1413,7 +1388,7 @@
                       "type": "string",
                       "description": "Message of the request.error message"
                     },
-                    "data":{
+                    "data": {
                       "type": "object",
                       "description": "The data of the tweet",
                       "properties": {
@@ -1517,8 +1492,6 @@
         }
       }
     },
-
-
 
     "/twitter/list/add_member": {
       "post": {
@@ -1660,8 +1633,6 @@
       }
     },
 
-
-
     "/twitter/upload_image": {
       "post": {
         "description": "upload image to twitter.Need to login first. Trial operation price: $0.001 per call.",
@@ -1728,8 +1699,6 @@
       }
     },
 
-
-
     "/plants/{id}": {
       "delete": {
         "description": "Deletes a single plant based on the ID supplied",
@@ -1763,7 +1732,6 @@
         }
       }
     },
-
 
     "/oapi/tweet_filter/get_rules": {
       "get": {
@@ -1819,10 +1787,10 @@
           "required": true,
           "content": {
             "application/json": {
-            "schema": {
-              "type": "object",
-              "required": ["tag", "value", "interval_seconds"],
-              "properties": {
+              "schema": {
+                "type": "object",
+                "required": ["tag", "value", "interval_seconds"],
+                "properties": {
                   "tag": {
                     "type": "string",
                     "description": "Custom tag to identify the rule.Must be set.Max length is 255"
@@ -1836,7 +1804,7 @@
                     "description": "Interval to check tweets.Must be set.Min value is 100.Max value is 86400 ()"
                   }
                 }
-              } 
+              }
             }
           }
         },
@@ -1881,7 +1849,6 @@
       }
     },
 
-
     "/oapi/tweet_filter/update_rule": {
       "post": {
         "description": "Update a tweet filter rule. You must set all parameters.",
@@ -1894,8 +1861,8 @@
                 "required": ["rule_id", "tag", "value", "interval_seconds"],
                 "properties": {
                   "rule_id": {
-                  "type": "string",
-                  "description": "ID of the rule to update.Must be set"
+                    "type": "string",
+                    "description": "ID of the rule to update.Must be set"
                   },
                   "tag": {
                     "type": "string",
@@ -1962,7 +1929,7 @@
         "requestBody": {
           "content": {
             "application/json": {
-              "schema": { 
+              "schema": {
                 "type": "object",
                 "properties": {
                   "rule_id": {
@@ -2011,8 +1978,6 @@
       }
     },
 
-
-
     "/twitter/community/info": {
       "get": {
         "description": "Get community info by community id. Price: 20 credits per call. Note: This API is a bit slow, we are still optimizing it.",
@@ -2032,7 +1997,6 @@
           "200": {
             "description": "Community info response",
             "content": {
-
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -2196,7 +2160,6 @@
           "200": {
             "description": "Community members response",
             "content": {
-
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -2255,7 +2218,6 @@
           "200": {
             "description": "Community moderator response",
             "content": {
-
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -2295,7 +2257,6 @@
       }
     },
 
-
     "/twitter/community/tweets": {
       "get": {
         "description": "Get tweets of a community. Page size is 20. Order by creation time desc. ",
@@ -2325,7 +2286,6 @@
           "200": {
             "description": "Community info response",
             "content": {
-
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -2373,7 +2333,6 @@
       }
     },
 
-
     "/twitter/list/members": {
       "get": {
         "description": "Get members of a list. Page size is 20.",
@@ -2389,7 +2348,7 @@
             }
           },
           {
-            "name":"cursor",
+            "name": "cursor",
             "in": "query",
             "description": "cursor of the page",
             "required": false,
@@ -2403,7 +2362,6 @@
           "200": {
             "description": "List members response",
             "content": {
-
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -2415,7 +2373,7 @@
                       },
                       "description": "Members of the list"
                     },
-                    "has_next_page": {  
+                    "has_next_page": {
                       "type": "boolean",
                       "description": "Indicates if there are more results available"
                     },
@@ -2466,7 +2424,7 @@
             }
           },
           {
-            "name":"cursor",
+            "name": "cursor",
             "in": "query",
             "description": "cursor of the page",
             "required": false,
@@ -2480,7 +2438,6 @@
           "200": {
             "description": "List followers of the list",
             "content": {
-
               "application/json": {
                 "schema": {
                   "type": "object",
@@ -2527,22 +2484,12 @@
         }
       }
     }
-
-    
-
-
-    
-
-
   },
-
 
   "components": {
     "schemas": {
       "Plant": {
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "type": "object",
         "properties": {
           "name": {
@@ -2663,7 +2610,7 @@
           "isAutomated": {
             "type": "boolean",
             "description": "Whether the account is automated"
-          },  
+          },
           "automatedBy": {
             "type": "string",
             "description": "The account that automated the account"
@@ -2752,12 +2699,9 @@
         }
       },
 
-
-
       "Trend": {
         "type": "object",
         "properties": {
-         
           "name": {
             "type": "string",
             "description": "The name of the trend"
@@ -2774,7 +2718,7 @@
           "rank": {
             "type": "integer",
             "description": "The rank of the trend"
-          },  
+          },
           "meta_description": {
             "type": "string",
             "description": "The meta description of the trend.eg. \"17.7K posts\".may be empty."
@@ -2946,9 +2890,7 @@
             "$ref": "#/components/schemas/Plant"
           },
           {
-            "required": [
-              "id"
-            ],
+            "required": ["id"],
             "type": "object",
             "properties": {
               "id": {
@@ -2960,7 +2902,6 @@
           }
         ]
       },
-
 
       "TweetFilterRule": {
         "type": "object",
@@ -2984,14 +2925,8 @@
         }
       },
 
-     
-
-
       "Error": {
-        "required": [
-          "error",
-          "message"
-        ],
+        "required": ["error", "message"],
         "type": "object",
         "properties": {
           "error": {
